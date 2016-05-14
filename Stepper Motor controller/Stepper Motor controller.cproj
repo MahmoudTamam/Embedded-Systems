@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.0</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
+    <ProjectGuid>{96a3fd2d-4291-481b-927c-6816b3771e05}</ProjectGuid>
+    <avrdevice>ATmega16</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>Embedded School Task 1</AssemblyName>
+    <Name>Stepper Motor controller</Name>
+    <RootNamespace>Embedded School Task 1</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue />
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <AsfVersion>3.0.1</AsfVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>None</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>m</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>../HAL/BTN</Value>
+            <Value>../MCAL/DIO</Value>
+            <Value>../MCAL/GPT</Value>
+            <Value>../HAL/STEPPER</Value>
+            <Value>../HAL/LED</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>m</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+    <UsesExternalMakeFile>False</UsesExternalMakeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="HAL\BTN\BTN.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\BTN\BTN.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Stepper Motor controller.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LED\LED.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\LED\LED.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\STEPPER\STEPPER.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\STEPPER\STEPPER.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO\DIO.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\DIO\DIO.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GPT\GPT.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\GPT\GPT.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HAL" />
+    <Folder Include="HAL\BTN" />
+    <Folder Include="HAL\LED" />
+    <Folder Include="HAL\STEPPER" />
+    <Folder Include="MCAL" />
+    <Folder Include="MCAL\DIO" />
+    <Folder Include="MCAL\GPT" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>

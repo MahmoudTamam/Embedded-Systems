@@ -1,0 +1,1664 @@
+
+Embedded School Task 1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000932  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000028  00800060  00000932  000009c6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000010  00800088  00800088  000009ee  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  000009f0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  000010bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 000000c0  00000000  00000000  00001153  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 0000021a  00000000  00000000  00001213  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000a1b  00000000  00000000  0000142d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 0000048e  00000000  00000000  00001e48  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000a8d  00000000  00000000  000022d6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  000001f0  00000000  00000000  00002d64  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000416  00000000  00000000  00002f54  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    00000729  00000000  00000000  0000336a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_pubtypes 000000c8  00000000  00000000  00003a93  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 6f 04 	jmp	0x8de	; 0x8de <__vector_3>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 48 04 	jmp	0x890	; 0x890 <__vector_19>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e2 e3       	ldi	r30, 0x32	; 50
+  68:	f9 e0       	ldi	r31, 0x09	; 9
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a8 38       	cpi	r26, 0x88	; 136
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a8 e8       	ldi	r26, 0x88	; 136
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a8 39       	cpi	r26, 0x98	; 152
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 21 01 	call	0x242	; 0x242 <main>
+  8a:	0c 94 97 04 	jmp	0x92e	; 0x92e <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <BTN_Init>:
+};
+
+static unsigned char State[NUM_OF_BTNS];
+static unsigned char GetState(unsigned char BtnID);
+void BTN_Init(void)
+{
+  92:	ef 92       	push	r14
+  94:	ff 92       	push	r15
+  96:	0f 93       	push	r16
+  98:	1f 93       	push	r17
+  9a:	cf 93       	push	r28
+  9c:	df 93       	push	r29
+  9e:	00 e6       	ldi	r16, 0x60	; 96
+  a0:	10 e0       	ldi	r17, 0x00	; 0
+  a2:	0f 2e       	mov	r0, r31
+  a4:	f8 e8       	ldi	r31, 0x88	; 136
+  a6:	ef 2e       	mov	r14, r31
+  a8:	f0 e0       	ldi	r31, 0x00	; 0
+  aa:	ff 2e       	mov	r15, r31
+  ac:	f0 2d       	mov	r31, r0
+	}
+};
+
+static unsigned char State[NUM_OF_BTNS];
+static unsigned char GetState(unsigned char BtnID);
+void BTN_Init(void)
+  ae:	e8 01       	movw	r28, r16
+  b0:	28 96       	adiw	r28, 0x08	; 8
+	unsigned char BtnMask;
+	for(LoopIndex = 0 ; LoopIndex < NUM_OF_BTNS ; LoopIndex ++)
+	{
+		BtnPort = BtnConfigData[LoopIndex].BtnPort;
+		BtnMask = BtnConfigData[LoopIndex].BtnMask;
+		DIO_vidWritePortDirection(BtnPort,BtnMask,0x00);
+  b2:	f8 01       	movw	r30, r16
+  b4:	80 81       	ld	r24, Z
+  b6:	61 81       	ldd	r22, Z+1	; 0x01
+  b8:	40 e0       	ldi	r20, 0x00	; 0
+  ba:	0e 94 aa 03 	call	0x754	; 0x754 <DIO_vidWritePortDirection>
+		State[LoopIndex] = STATE_OPEN;
+  be:	f7 01       	movw	r30, r14
+  c0:	11 92       	st	Z+, r1
+  c2:	7f 01       	movw	r14, r30
+  c4:	0e 5f       	subi	r16, 0xFE	; 254
+  c6:	1f 4f       	sbci	r17, 0xFF	; 255
+{
+	
+	unsigned char LoopIndex;
+	unsigned char BtnPort;
+	unsigned char BtnMask;
+	for(LoopIndex = 0 ; LoopIndex < NUM_OF_BTNS ; LoopIndex ++)
+  c8:	0c 17       	cp	r16, r28
+  ca:	1d 07       	cpc	r17, r29
+  cc:	91 f7       	brne	.-28     	; 0xb2 <BTN_Init+0x20>
+		BtnPort = BtnConfigData[LoopIndex].BtnPort;
+		BtnMask = BtnConfigData[LoopIndex].BtnMask;
+		DIO_vidWritePortDirection(BtnPort,BtnMask,0x00);
+		State[LoopIndex] = STATE_OPEN;
+	}
+}
+  ce:	df 91       	pop	r29
+  d0:	cf 91       	pop	r28
+  d2:	1f 91       	pop	r17
+  d4:	0f 91       	pop	r16
+  d6:	ff 90       	pop	r15
+  d8:	ef 90       	pop	r14
+  da:	08 95       	ret
+
+000000dc <BTN_GetBtnState>:
+
+void BTN_GetBtnState(unsigned char u8BtnId,unsigned char* pu8BtnStatePtr)
+{
+  dc:	ef 92       	push	r14
+  de:	ff 92       	push	r15
+  e0:	0f 93       	push	r16
+  e2:	1f 93       	push	r17
+  e4:	df 93       	push	r29
+  e6:	cf 93       	push	r28
+  e8:	0f 92       	push	r0
+  ea:	cd b7       	in	r28, 0x3d	; 61
+  ec:	de b7       	in	r29, 0x3e	; 62
+  ee:	7b 01       	movw	r14, r22
+{
+	unsigned char BtnPort;
+	unsigned char BtnMask;
+	unsigned char BtnData;
+	unsigned char BtnOut;
+	BtnPort = BtnConfigData[BtnID].BtnPort;
+  f0:	08 2f       	mov	r16, r24
+  f2:	10 e0       	ldi	r17, 0x00	; 0
+  f4:	f8 01       	movw	r30, r16
+  f6:	ee 0f       	add	r30, r30
+  f8:	ff 1f       	adc	r31, r31
+  fa:	e0 5a       	subi	r30, 0xA0	; 160
+  fc:	ff 4f       	sbci	r31, 0xFF	; 255
+	BtnMask = BtnConfigData[BtnID].BtnMask;
+	DIO_vidReadPortData(BtnPort,BtnMask,&BtnData);
+  fe:	80 81       	ld	r24, Z
+ 100:	61 81       	ldd	r22, Z+1	; 0x01
+ 102:	ae 01       	movw	r20, r28
+ 104:	4f 5f       	subi	r20, 0xFF	; 255
+ 106:	5f 4f       	sbci	r21, 0xFF	; 255
+ 108:	0e 94 0c 04 	call	0x818	; 0x818 <DIO_vidReadPortData>
+	
+	if(State[BtnID] == STATE_OPEN)
+ 10c:	f8 01       	movw	r30, r16
+ 10e:	e8 57       	subi	r30, 0x78	; 120
+ 110:	ff 4f       	sbci	r31, 0xFF	; 255
+ 112:	80 81       	ld	r24, Z
+ 114:	88 23       	and	r24, r24
+ 116:	81 f4       	brne	.+32     	; 0x138 <BTN_GetBtnState+0x5c>
+	{
+		if(BtnData == 0x00)
+ 118:	89 81       	ldd	r24, Y+1	; 0x01
+ 11a:	88 23       	and	r24, r24
+ 11c:	31 f4       	brne	.+12     	; 0x12a <BTN_GetBtnState+0x4e>
+		{
+			State[BtnID] = STATE_OPEN;
+ 11e:	f8 01       	movw	r30, r16
+ 120:	e8 57       	subi	r30, 0x78	; 120
+ 122:	ff 4f       	sbci	r31, 0xFF	; 255
+ 124:	10 82       	st	Z, r1
+			BtnOut = BTN_STATE_INACTIVE;
+ 126:	81 e0       	ldi	r24, 0x01	; 1
+ 128:	16 c0       	rjmp	.+44     	; 0x156 <BTN_GetBtnState+0x7a>
+		}
+		else
+		{
+			State[BtnID] = STATE_CLOSED;
+ 12a:	f8 01       	movw	r30, r16
+ 12c:	e8 57       	subi	r30, 0x78	; 120
+ 12e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 130:	81 e0       	ldi	r24, 0x01	; 1
+ 132:	80 83       	st	Z, r24
+			BtnOut = BTN_STATE_ACTIVE;
+ 134:	80 e0       	ldi	r24, 0x00	; 0
+ 136:	0f c0       	rjmp	.+30     	; 0x156 <BTN_GetBtnState+0x7a>
+		}
+	}
+	else
+	{
+		if(BtnData == 0x00)
+ 138:	89 81       	ldd	r24, Y+1	; 0x01
+ 13a:	88 23       	and	r24, r24
+ 13c:	31 f4       	brne	.+12     	; 0x14a <BTN_GetBtnState+0x6e>
+		{
+			State[BtnID] = STATE_OPEN;
+ 13e:	f8 01       	movw	r30, r16
+ 140:	e8 57       	subi	r30, 0x78	; 120
+ 142:	ff 4f       	sbci	r31, 0xFF	; 255
+ 144:	10 82       	st	Z, r1
+			BtnOut = BTN_STATE_INACTIVE;
+ 146:	81 e0       	ldi	r24, 0x01	; 1
+ 148:	06 c0       	rjmp	.+12     	; 0x156 <BTN_GetBtnState+0x7a>
+		}
+		else
+		{
+			State[BtnID] = STATE_CLOSED;
+ 14a:	f8 01       	movw	r30, r16
+ 14c:	e8 57       	subi	r30, 0x78	; 120
+ 14e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 150:	81 e0       	ldi	r24, 0x01	; 1
+ 152:	80 83       	st	Z, r24
+			BtnOut = BTN_STATE_ACTIVE;
+ 154:	80 e0       	ldi	r24, 0x00	; 0
+	}
+}
+
+void BTN_GetBtnState(unsigned char u8BtnId,unsigned char* pu8BtnStatePtr)
+{
+   *pu8BtnStatePtr = GetState(u8BtnId);
+ 156:	f7 01       	movw	r30, r14
+ 158:	80 83       	st	Z, r24
+}
+ 15a:	0f 90       	pop	r0
+ 15c:	cf 91       	pop	r28
+ 15e:	df 91       	pop	r29
+ 160:	1f 91       	pop	r17
+ 162:	0f 91       	pop	r16
+ 164:	ff 90       	pop	r15
+ 166:	ef 90       	pop	r14
+ 168:	08 95       	ret
+
+0000016a <STEP_Task>:
+	LED_Toggle(Current_LEDS[1]);
+}
+
+void STEP_Task(void)
+{
+	STEP_Rotate(STEP1_Id);
+ 16a:	80 e0       	ldi	r24, 0x00	; 0
+ 16c:	0e 94 3f 03 	call	0x67e	; 0x67e <STEP_Rotate>
+ 170:	08 95       	ret
+
+00000172 <LED_Task>:
+	DIR ^= 1;
+}
+
+void LED_Task(void)
+{
+	LED_Toggle(Current_LEDS[0]);
+ 172:	80 91 70 00 	lds	r24, 0x0070
+ 176:	0e 94 fb 01 	call	0x3f6	; 0x3f6 <LED_Toggle>
+	LED_Toggle(Current_LEDS[1]);
+ 17a:	80 91 71 00 	lds	r24, 0x0071
+ 17e:	0e 94 fb 01 	call	0x3f6	; 0x3f6 <LED_Toggle>
+}
+ 182:	08 95       	ret
+
+00000184 <STEPPER_Direction>:
+	LED_Set(OFF,MODE_FULL_LED);}
+	MOD ^= 1;
+}
+
+void STEPPER_Direction(unsigned char id)
+{
+ 184:	68 2f       	mov	r22, r24
+	STEP_Direction(DIR,id);
+ 186:	80 91 72 00 	lds	r24, 0x0072
+ 18a:	0e 94 4b 02 	call	0x496	; 0x496 <STEP_Direction>
+	if (DIR == Right){Current_LEDS[0] = Right_LED;
+ 18e:	80 91 72 00 	lds	r24, 0x0072
+ 192:	81 30       	cpi	r24, 0x01	; 1
+ 194:	39 f4       	brne	.+14     	; 0x1a4 <STEPPER_Direction+0x20>
+ 196:	10 92 70 00 	sts	0x0070, r1
+	LED_Set(OFF,LEFT_LED);}
+ 19a:	80 e0       	ldi	r24, 0x00	; 0
+ 19c:	61 e0       	ldi	r22, 0x01	; 1
+ 19e:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <LED_Set>
+ 1a2:	07 c0       	rjmp	.+14     	; 0x1b2 <STEPPER_Direction+0x2e>
+	else {Current_LEDS[0] = LEFT_LED;
+ 1a4:	81 e0       	ldi	r24, 0x01	; 1
+ 1a6:	80 93 70 00 	sts	0x0070, r24
+	LED_Set(OFF,Right_LED);}
+ 1aa:	80 e0       	ldi	r24, 0x00	; 0
+ 1ac:	60 e0       	ldi	r22, 0x00	; 0
+ 1ae:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <LED_Set>
+	DIR ^= 1;
+ 1b2:	90 91 72 00 	lds	r25, 0x0072
+ 1b6:	81 e0       	ldi	r24, 0x01	; 1
+ 1b8:	89 27       	eor	r24, r25
+ 1ba:	80 93 72 00 	sts	0x0072, r24
+}
+ 1be:	08 95       	ret
+
+000001c0 <STEPPER_Mode>:
+	GPT_TimerInit(STEP_Task,Speed[Speed_ID]);}
+	
+}
+
+void STEPPER_Mode(unsigned char id)
+{
+ 1c0:	68 2f       	mov	r22, r24
+	STEP_Mode(MOD,id);
+ 1c2:	80 91 73 00 	lds	r24, 0x0073
+ 1c6:	0e 94 3b 02 	call	0x476	; 0x476 <STEP_Mode>
+	if (MOD == FULL_STEP_Mode){Current_LEDS[1] = MODE_FULL_LED; 
+ 1ca:	80 91 73 00 	lds	r24, 0x0073
+ 1ce:	81 30       	cpi	r24, 0x01	; 1
+ 1d0:	41 f4       	brne	.+16     	; 0x1e2 <STEPPER_Mode+0x22>
+ 1d2:	82 e0       	ldi	r24, 0x02	; 2
+ 1d4:	80 93 71 00 	sts	0x0071, r24
+	LED_Set(OFF,MODE_HALF_LED);}
+ 1d8:	80 e0       	ldi	r24, 0x00	; 0
+ 1da:	63 e0       	ldi	r22, 0x03	; 3
+ 1dc:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <LED_Set>
+ 1e0:	07 c0       	rjmp	.+14     	; 0x1f0 <STEPPER_Mode+0x30>
+	else {Current_LEDS[1] = MODE_HALF_LED;
+ 1e2:	83 e0       	ldi	r24, 0x03	; 3
+ 1e4:	80 93 71 00 	sts	0x0071, r24
+	LED_Set(OFF,MODE_FULL_LED);}
+ 1e8:	80 e0       	ldi	r24, 0x00	; 0
+ 1ea:	62 e0       	ldi	r22, 0x02	; 2
+ 1ec:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <LED_Set>
+	MOD ^= 1;
+ 1f0:	90 91 73 00 	lds	r25, 0x0073
+ 1f4:	81 e0       	ldi	r24, 0x01	; 1
+ 1f6:	89 27       	eor	r24, r25
+ 1f8:	80 93 73 00 	sts	0x0073, r24
+}
+ 1fc:	08 95       	ret
+
+000001fe <STEPPER_DN>:
+	
+}
+
+void STEPPER_DN(unsigned char id)
+{
+	if(Speed_ID > 0){Speed_ID--;
+ 1fe:	80 91 74 00 	lds	r24, 0x0074
+ 202:	88 23       	and	r24, r24
+ 204:	61 f0       	breq	.+24     	; 0x21e <STEPPER_DN+0x20>
+ 206:	81 50       	subi	r24, 0x01	; 1
+ 208:	80 93 74 00 	sts	0x0074, r24
+	GPT_TimerInit(STEP_Task,Speed[Speed_ID]);}
+ 20c:	e5 e7       	ldi	r30, 0x75	; 117
+ 20e:	f0 e0       	ldi	r31, 0x00	; 0
+ 210:	e8 0f       	add	r30, r24
+ 212:	f1 1d       	adc	r31, r1
+ 214:	85 eb       	ldi	r24, 0xB5	; 181
+ 216:	90 e0       	ldi	r25, 0x00	; 0
+ 218:	60 81       	ld	r22, Z
+ 21a:	0e 94 39 04 	call	0x872	; 0x872 <GPT_TimerInit>
+ 21e:	08 95       	ret
+
+00000220 <STEPPER_UP>:
+	}	
+}
+
+void STEPPER_UP(unsigned char id)
+{
+	if(Speed_ID < 4){Speed_ID++;
+ 220:	80 91 74 00 	lds	r24, 0x0074
+ 224:	84 30       	cpi	r24, 0x04	; 4
+ 226:	60 f4       	brcc	.+24     	; 0x240 <STEPPER_UP+0x20>
+ 228:	8f 5f       	subi	r24, 0xFF	; 255
+ 22a:	80 93 74 00 	sts	0x0074, r24
+	GPT_TimerInit(STEP_Task,Speed[Speed_ID]);}
+ 22e:	e5 e7       	ldi	r30, 0x75	; 117
+ 230:	f0 e0       	ldi	r31, 0x00	; 0
+ 232:	e8 0f       	add	r30, r24
+ 234:	f1 1d       	adc	r31, r1
+ 236:	85 eb       	ldi	r24, 0xB5	; 181
+ 238:	90 e0       	ldi	r25, 0x00	; 0
+ 23a:	60 81       	ld	r22, Z
+ 23c:	0e 94 39 04 	call	0x872	; 0x872 <GPT_TimerInit>
+ 240:	08 95       	ret
+
+00000242 <main>:
+static unsigned char Current_LEDS [2] = {Right_LED, MODE_FULL_LED};
+static unsigned char Speed_ID = 4;
+static unsigned char Speed[5] = {254,127,63,31,15}; //976,487,243,97,48 //1sec,0.5,0.25,0.1,0.05
+//Errors and upgrades: - Transfer from half to full - add Stepper speed function to GPT -GPT New generic driver -DIO New generic driver
+int main(void)
+{
+ 242:	6f 92       	push	r6
+ 244:	7f 92       	push	r7
+ 246:	8f 92       	push	r8
+ 248:	9f 92       	push	r9
+ 24a:	af 92       	push	r10
+ 24c:	bf 92       	push	r11
+ 24e:	cf 92       	push	r12
+ 250:	df 92       	push	r13
+ 252:	ef 92       	push	r14
+ 254:	ff 92       	push	r15
+ 256:	0f 93       	push	r16
+ 258:	1f 93       	push	r17
+ 25a:	df 93       	push	r29
+ 25c:	cf 93       	push	r28
+ 25e:	00 d0       	rcall	.+0      	; 0x260 <main+0x1e>
+ 260:	00 d0       	rcall	.+0      	; 0x262 <main+0x20>
+ 262:	cd b7       	in	r28, 0x3d	; 61
+ 264:	de b7       	in	r29, 0x3e	; 62
+	unsigned char SPEED_Up,SPEED_Dn,Mode,Direction;
+	unsigned char Transition_ready = 5;
+	BTN_Init();
+ 266:	0e 94 49 00 	call	0x92	; 0x92 <BTN_Init>
+	LED_Init();
+ 26a:	0e 94 bf 01 	call	0x37e	; 0x37e <LED_Init>
+	STEP_Init();
+ 26e:	0e 94 06 02 	call	0x40c	; 0x40c <STEP_Init>
+	STEPPER_Mode(STEP1_Id);
+ 272:	80 e0       	ldi	r24, 0x00	; 0
+ 274:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <STEPPER_Mode>
+    STEPPER_Direction(STEP1_Id);
+ 278:	80 e0       	ldi	r24, 0x00	; 0
+ 27a:	0e 94 c2 00 	call	0x184	; 0x184 <STEPPER_Direction>
+	GPT_Timer250msInit(LED_Task);
+ 27e:	89 eb       	ldi	r24, 0xB9	; 185
+ 280:	90 e0       	ldi	r25, 0x00	; 0
+ 282:	0e 94 29 04 	call	0x852	; 0x852 <GPT_Timer250msInit>
+	GPT_TimerInit(STEP_Task,Speed[Speed_ID]);
+ 286:	80 91 74 00 	lds	r24, 0x0074
+ 28a:	e5 e7       	ldi	r30, 0x75	; 117
+ 28c:	f0 e0       	ldi	r31, 0x00	; 0
+ 28e:	e8 0f       	add	r30, r24
+ 290:	f1 1d       	adc	r31, r1
+ 292:	85 eb       	ldi	r24, 0xB5	; 181
+ 294:	90 e0       	ldi	r25, 0x00	; 0
+ 296:	60 81       	ld	r22, Z
+ 298:	0e 94 39 04 	call	0x872	; 0x872 <GPT_TimerInit>
+static unsigned char Speed[5] = {254,127,63,31,15}; //976,487,243,97,48 //1sec,0.5,0.25,0.1,0.05
+//Errors and upgrades: - Transfer from half to full - add Stepper speed function to GPT -GPT New generic driver -DIO New generic driver
+int main(void)
+{
+	unsigned char SPEED_Up,SPEED_Dn,Mode,Direction;
+	unsigned char Transition_ready = 5;
+ 29c:	0f 2e       	mov	r0, r31
+ 29e:	f5 e0       	ldi	r31, 0x05	; 5
+ 2a0:	9f 2e       	mov	r9, r31
+ 2a2:	f0 2d       	mov	r31, r0
+    STEPPER_Direction(STEP1_Id);
+	GPT_Timer250msInit(LED_Task);
+	GPT_TimerInit(STEP_Task,Speed[Speed_ID]);
+    while(1)
+    {
+		BTN_GetBtnState(BTNSPEED_Up_ID,&SPEED_Up);
+ 2a4:	8e 01       	movw	r16, r28
+ 2a6:	0f 5f       	subi	r16, 0xFF	; 255
+ 2a8:	1f 4f       	sbci	r17, 0xFF	; 255
+		BTN_GetBtnState(BTNSPEED_Dn_ID,&SPEED_Dn);
+ 2aa:	ee 24       	eor	r14, r14
+ 2ac:	ff 24       	eor	r15, r15
+ 2ae:	68 94       	set
+ 2b0:	e1 f8       	bld	r14, 1
+ 2b2:	ec 0e       	add	r14, r28
+ 2b4:	fd 1e       	adc	r15, r29
+		BTN_GetBtnState(BTNMode_ID,&Mode);
+ 2b6:	0f 2e       	mov	r0, r31
+ 2b8:	f3 e0       	ldi	r31, 0x03	; 3
+ 2ba:	cf 2e       	mov	r12, r31
+ 2bc:	dd 24       	eor	r13, r13
+ 2be:	f0 2d       	mov	r31, r0
+ 2c0:	cc 0e       	add	r12, r28
+ 2c2:	dd 1e       	adc	r13, r29
+		BTN_GetBtnState(BTNDirection_ID,&Direction);
+ 2c4:	aa 24       	eor	r10, r10
+ 2c6:	bb 24       	eor	r11, r11
+ 2c8:	68 94       	set
+ 2ca:	a2 f8       	bld	r10, 2
+ 2cc:	ac 0e       	add	r10, r28
+ 2ce:	bd 1e       	adc	r11, r29
+		{
+			Transition_ready = ((SPEED_Up == BTN_STATE_ACTIVE) & 0) | ((SPEED_Dn == BTN_STATE_ACTIVE) *1) | ((Mode == BTN_STATE_ACTIVE) * 2) | ((Direction == BTN_STATE_ACTIVE) *3);
+		}
+		else if(((SPEED_Up || SPEED_Dn || Mode || Direction)  == BTN_STATE_INACTIVE)  && (Transition_ready < 5)) // to check for falling edge of any BTN once it was High
+		{
+			(*State[Transition_ready]) (STEP1_Id);	
+ 2d0:	0f 2e       	mov	r0, r31
+ 2d2:	f8 e6       	ldi	r31, 0x68	; 104
+ 2d4:	6f 2e       	mov	r6, r31
+ 2d6:	f0 e0       	ldi	r31, 0x00	; 0
+ 2d8:	7f 2e       	mov	r7, r31
+ 2da:	f0 2d       	mov	r31, r0
+			Transition_ready = 5;
+ 2dc:	0f 2e       	mov	r0, r31
+ 2de:	f5 e0       	ldi	r31, 0x05	; 5
+ 2e0:	8f 2e       	mov	r8, r31
+ 2e2:	f0 2d       	mov	r31, r0
+    STEPPER_Direction(STEP1_Id);
+	GPT_Timer250msInit(LED_Task);
+	GPT_TimerInit(STEP_Task,Speed[Speed_ID]);
+    while(1)
+    {
+		BTN_GetBtnState(BTNSPEED_Up_ID,&SPEED_Up);
+ 2e4:	80 e0       	ldi	r24, 0x00	; 0
+ 2e6:	b8 01       	movw	r22, r16
+ 2e8:	0e 94 6e 00 	call	0xdc	; 0xdc <BTN_GetBtnState>
+		BTN_GetBtnState(BTNSPEED_Dn_ID,&SPEED_Dn);
+ 2ec:	81 e0       	ldi	r24, 0x01	; 1
+ 2ee:	b7 01       	movw	r22, r14
+ 2f0:	0e 94 6e 00 	call	0xdc	; 0xdc <BTN_GetBtnState>
+		BTN_GetBtnState(BTNMode_ID,&Mode);
+ 2f4:	82 e0       	ldi	r24, 0x02	; 2
+ 2f6:	b6 01       	movw	r22, r12
+ 2f8:	0e 94 6e 00 	call	0xdc	; 0xdc <BTN_GetBtnState>
+		BTN_GetBtnState(BTNDirection_ID,&Direction);
+ 2fc:	83 e0       	ldi	r24, 0x03	; 3
+ 2fe:	b5 01       	movw	r22, r10
+ 300:	0e 94 6e 00 	call	0xdc	; 0xdc <BTN_GetBtnState>
+		
+		if((SPEED_Up == BTN_STATE_ACTIVE) || (SPEED_Dn == BTN_STATE_ACTIVE) || (Mode== BTN_STATE_ACTIVE) || (Direction == BTN_STATE_ACTIVE))
+ 304:	89 81       	ldd	r24, Y+1	; 0x01
+ 306:	88 23       	and	r24, r24
+ 308:	51 f0       	breq	.+20     	; 0x31e <main+0xdc>
+ 30a:	9a 81       	ldd	r25, Y+2	; 0x02
+ 30c:	99 23       	and	r25, r25
+ 30e:	39 f0       	breq	.+14     	; 0x31e <main+0xdc>
+ 310:	8b 81       	ldd	r24, Y+3	; 0x03
+ 312:	88 23       	and	r24, r24
+ 314:	79 f1       	breq	.+94     	; 0x374 <main+0x132>
+ 316:	8c 81       	ldd	r24, Y+4	; 0x04
+ 318:	88 23       	and	r24, r24
+ 31a:	39 f1       	breq	.+78     	; 0x36a <main+0x128>
+ 31c:	16 c0       	rjmp	.+44     	; 0x34a <main+0x108>
+		{
+			Transition_ready = ((SPEED_Up == BTN_STATE_ACTIVE) & 0) | ((SPEED_Dn == BTN_STATE_ACTIVE) *1) | ((Mode == BTN_STATE_ACTIVE) * 2) | ((Direction == BTN_STATE_ACTIVE) *3);
+ 31e:	81 e0       	ldi	r24, 0x01	; 1
+ 320:	9a 81       	ldd	r25, Y+2	; 0x02
+ 322:	91 11       	cpse	r25, r1
+ 324:	80 e0       	ldi	r24, 0x00	; 0
+ 326:	9b 81       	ldd	r25, Y+3	; 0x03
+ 328:	99 23       	and	r25, r25
+ 32a:	11 f0       	breq	.+4      	; 0x330 <main+0xee>
+ 32c:	90 e0       	ldi	r25, 0x00	; 0
+ 32e:	01 c0       	rjmp	.+2      	; 0x332 <main+0xf0>
+ 330:	92 e0       	ldi	r25, 0x02	; 2
+ 332:	89 2b       	or	r24, r25
+ 334:	9c 81       	ldd	r25, Y+4	; 0x04
+ 336:	99 23       	and	r25, r25
+ 338:	29 f4       	brne	.+10     	; 0x344 <main+0x102>
+ 33a:	0f 2e       	mov	r0, r31
+ 33c:	f3 e0       	ldi	r31, 0x03	; 3
+ 33e:	9f 2e       	mov	r9, r31
+ 340:	f0 2d       	mov	r31, r0
+ 342:	01 c0       	rjmp	.+2      	; 0x346 <main+0x104>
+ 344:	99 24       	eor	r9, r9
+ 346:	98 2a       	or	r9, r24
+ 348:	cd cf       	rjmp	.-102    	; 0x2e4 <main+0xa2>
+		}
+		else if(((SPEED_Up || SPEED_Dn || Mode || Direction)  == BTN_STATE_INACTIVE)  && (Transition_ready < 5)) // to check for falling edge of any BTN once it was High
+ 34a:	89 2d       	mov	r24, r9
+ 34c:	85 30       	cpi	r24, 0x05	; 5
+ 34e:	50 f6       	brcc	.-108    	; 0x2e4 <main+0xa2>
+		{
+			(*State[Transition_ready]) (STEP1_Id);	
+ 350:	e9 2d       	mov	r30, r9
+ 352:	f0 e0       	ldi	r31, 0x00	; 0
+ 354:	ee 0f       	add	r30, r30
+ 356:	ff 1f       	adc	r31, r31
+ 358:	e6 0d       	add	r30, r6
+ 35a:	f7 1d       	adc	r31, r7
+ 35c:	01 90       	ld	r0, Z+
+ 35e:	f0 81       	ld	r31, Z
+ 360:	e0 2d       	mov	r30, r0
+ 362:	80 e0       	ldi	r24, 0x00	; 0
+ 364:	09 95       	icall
+			Transition_ready = 5;
+ 366:	98 2c       	mov	r9, r8
+ 368:	bd cf       	rjmp	.-134    	; 0x2e4 <main+0xa2>
+		BTN_GetBtnState(BTNMode_ID,&Mode);
+		BTN_GetBtnState(BTNDirection_ID,&Direction);
+		
+		if((SPEED_Up == BTN_STATE_ACTIVE) || (SPEED_Dn == BTN_STATE_ACTIVE) || (Mode== BTN_STATE_ACTIVE) || (Direction == BTN_STATE_ACTIVE))
+		{
+			Transition_ready = ((SPEED_Up == BTN_STATE_ACTIVE) & 0) | ((SPEED_Dn == BTN_STATE_ACTIVE) *1) | ((Mode == BTN_STATE_ACTIVE) * 2) | ((Direction == BTN_STATE_ACTIVE) *3);
+ 36a:	81 e0       	ldi	r24, 0x01	; 1
+ 36c:	99 23       	and	r25, r25
+ 36e:	f1 f2       	breq	.-68     	; 0x32c <main+0xea>
+ 370:	80 e0       	ldi	r24, 0x00	; 0
+ 372:	dc cf       	rjmp	.-72     	; 0x32c <main+0xea>
+ 374:	81 e0       	ldi	r24, 0x01	; 1
+ 376:	91 11       	cpse	r25, r1
+ 378:	80 e0       	ldi	r24, 0x00	; 0
+ 37a:	92 e0       	ldi	r25, 0x02	; 2
+ 37c:	da cf       	rjmp	.-76     	; 0x332 <main+0xf0>
+
+0000037e <LED_Init>:
+			PB,0x08
+	}
+};
+
+void LED_Init(void)
+{
+ 37e:	ef 92       	push	r14
+ 380:	ff 92       	push	r15
+ 382:	0f 93       	push	r16
+ 384:	1f 93       	push	r17
+ 386:	cf 93       	push	r28
+ 388:	df 93       	push	r29
+ 38a:	ca e7       	ldi	r28, 0x7A	; 122
+ 38c:	d0 e0       	ldi	r29, 0x00	; 0
+	{
+			PB,0x08
+	}
+};
+
+void LED_Init(void)
+ 38e:	ee 24       	eor	r14, r14
+ 390:	ff 24       	eor	r15, r15
+ 392:	68 94       	set
+ 394:	e3 f8       	bld	r14, 3
+ 396:	ec 0e       	add	r14, r28
+ 398:	fd 1e       	adc	r15, r29
+	unsigned char LoopIndex;
+	unsigned char LEDPort;
+	unsigned char LEDMask;
+	for(LoopIndex = 0 ; LoopIndex < LED_NUM ; LoopIndex ++)
+	{
+		LEDPort = LED_ConfigData[LoopIndex].LEDPort;
+ 39a:	08 81       	ld	r16, Y
+		LEDMask = LED_ConfigData[LoopIndex].LEDMask;
+ 39c:	19 81       	ldd	r17, Y+1	; 0x01
+		DIO_vidWritePortDirection(LEDPort,LEDMask,0xFF);
+ 39e:	80 2f       	mov	r24, r16
+ 3a0:	61 2f       	mov	r22, r17
+ 3a2:	4f ef       	ldi	r20, 0xFF	; 255
+ 3a4:	0e 94 aa 03 	call	0x754	; 0x754 <DIO_vidWritePortDirection>
+		DIO_vidWritePortData(LEDPort,LEDMask,ON);
+ 3a8:	80 2f       	mov	r24, r16
+ 3aa:	61 2f       	mov	r22, r17
+ 3ac:	4f ef       	ldi	r20, 0xFF	; 255
+ 3ae:	0e 94 db 03 	call	0x7b6	; 0x7b6 <DIO_vidWritePortData>
+ 3b2:	22 96       	adiw	r28, 0x02	; 2
+void LED_Init(void)
+{
+	unsigned char LoopIndex;
+	unsigned char LEDPort;
+	unsigned char LEDMask;
+	for(LoopIndex = 0 ; LoopIndex < LED_NUM ; LoopIndex ++)
+ 3b4:	ce 15       	cp	r28, r14
+ 3b6:	df 05       	cpc	r29, r15
+ 3b8:	81 f7       	brne	.-32     	; 0x39a <LED_Init+0x1c>
+		LEDPort = LED_ConfigData[LoopIndex].LEDPort;
+		LEDMask = LED_ConfigData[LoopIndex].LEDMask;
+		DIO_vidWritePortDirection(LEDPort,LEDMask,0xFF);
+		DIO_vidWritePortData(LEDPort,LEDMask,ON);
+	}
+}
+ 3ba:	df 91       	pop	r29
+ 3bc:	cf 91       	pop	r28
+ 3be:	1f 91       	pop	r17
+ 3c0:	0f 91       	pop	r16
+ 3c2:	ff 90       	pop	r15
+ 3c4:	ef 90       	pop	r14
+ 3c6:	08 95       	ret
+
+000003c8 <LED_Set>:
+
+void LED_Set(unsigned char SET,unsigned char id)
+{
+ 3c8:	1f 93       	push	r17
+ 3ca:	cf 93       	push	r28
+ 3cc:	df 93       	push	r29
+ 3ce:	18 2f       	mov	r17, r24
+		unsigned char LEDPort = LED_ConfigData[id].LEDPort;
+ 3d0:	c6 2f       	mov	r28, r22
+ 3d2:	d0 e0       	ldi	r29, 0x00	; 0
+ 3d4:	fe 01       	movw	r30, r28
+ 3d6:	ee 0f       	add	r30, r30
+ 3d8:	ff 1f       	adc	r31, r31
+ 3da:	e6 58       	subi	r30, 0x86	; 134
+ 3dc:	ff 4f       	sbci	r31, 0xFF	; 255
+		unsigned char LEDMask = LED_ConfigData[id].LEDMask;
+		DIO_vidWritePortData(LEDPort,LEDMask,SET);
+ 3de:	80 81       	ld	r24, Z
+ 3e0:	61 81       	ldd	r22, Z+1	; 0x01
+ 3e2:	41 2f       	mov	r20, r17
+ 3e4:	0e 94 db 03 	call	0x7b6	; 0x7b6 <DIO_vidWritePortData>
+		Toggle[id] = SET;
+ 3e8:	c4 57       	subi	r28, 0x74	; 116
+ 3ea:	df 4f       	sbci	r29, 0xFF	; 255
+ 3ec:	18 83       	st	Y, r17
+}
+ 3ee:	df 91       	pop	r29
+ 3f0:	cf 91       	pop	r28
+ 3f2:	1f 91       	pop	r17
+ 3f4:	08 95       	ret
+
+000003f6 <LED_Toggle>:
+
+void LED_Toggle(unsigned char id)
+{
+ 3f6:	68 2f       	mov	r22, r24
+	Toggle[id] = ~(Toggle[id]);
+ 3f8:	e8 2f       	mov	r30, r24
+ 3fa:	f0 e0       	ldi	r31, 0x00	; 0
+ 3fc:	e4 57       	subi	r30, 0x74	; 116
+ 3fe:	ff 4f       	sbci	r31, 0xFF	; 255
+ 400:	80 81       	ld	r24, Z
+ 402:	80 95       	com	r24
+ 404:	80 83       	st	Z, r24
+	LED_Set(Toggle[id],id);
+ 406:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <LED_Set>
+ 40a:	08 95       	ret
+
+0000040c <STEP_Init>:
+			PA,{0x01,0x02,0x04,0x08}
+	}
+};
+
+void STEP_Init(void)
+{
+ 40c:	ef 92       	push	r14
+ 40e:	ff 92       	push	r15
+ 410:	0f 93       	push	r16
+ 412:	1f 93       	push	r17
+ 414:	cf 93       	push	r28
+ 416:	df 93       	push	r29
+	unsigned char LoopIndex;
+	unsigned char STEP_Port;
+	unsigned char STEP_Mask;
+	unsigned char STEPNUM = 0;
+	unsigned char Str_ar = 0;
+	STEP_Count = 0;
+ 418:	10 92 92 00 	sts	0x0092, r1
+{
+	unsigned char LoopIndex;
+	unsigned char STEP_Port;
+	unsigned char STEP_Mask;
+	unsigned char STEPNUM = 0;
+	unsigned char Str_ar = 0;
+ 41c:	00 e0       	ldi	r16, 0x00	; 0
+void STEP_Init(void)
+{
+	unsigned char LoopIndex;
+	unsigned char STEP_Port;
+	unsigned char STEP_Mask;
+	unsigned char STEPNUM = 0;
+ 41e:	ff 24       	eor	r15, r15
+	unsigned char Str_ar = 0;
+	STEP_Count = 0;
+	for(LoopIndex = 0 ; LoopIndex < (STEP_NUM * 4) ; LoopIndex ++)
+ 420:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		if (((LoopIndex % 4) == 0) && (LoopIndex != 0)){++STEPNUM;}
+		if (Str_ar == 4){Str_ar =0;}
+ 422:	ee 24       	eor	r14, r14
+		STEP_Port = STEP_ConfigData[STEPNUM].STEPPort;
+ 424:	c2 e8       	ldi	r28, 0x82	; 130
+ 426:	d0 e0       	ldi	r29, 0x00	; 0
+	unsigned char STEPNUM = 0;
+	unsigned char Str_ar = 0;
+	STEP_Count = 0;
+	for(LoopIndex = 0 ; LoopIndex < (STEP_NUM * 4) ; LoopIndex ++)
+	{
+		if (((LoopIndex % 4) == 0) && (LoopIndex != 0)){++STEPNUM;}
+ 428:	81 2f       	mov	r24, r17
+ 42a:	83 70       	andi	r24, 0x03	; 3
+ 42c:	11 f4       	brne	.+4      	; 0x432 <STEP_Init+0x26>
+ 42e:	11 11       	cpse	r17, r1
+ 430:	f3 94       	inc	r15
+		if (Str_ar == 4){Str_ar =0;}
+ 432:	04 30       	cpi	r16, 0x04	; 4
+ 434:	09 f4       	brne	.+2      	; 0x438 <STEP_Init+0x2c>
+ 436:	0e 2d       	mov	r16, r14
+		STEP_Port = STEP_ConfigData[STEPNUM].STEPPort;
+ 438:	8f 2d       	mov	r24, r15
+ 43a:	90 e0       	ldi	r25, 0x00	; 0
+ 43c:	dc 01       	movw	r26, r24
+ 43e:	aa 0f       	add	r26, r26
+ 440:	bb 1f       	adc	r27, r27
+ 442:	aa 0f       	add	r26, r26
+ 444:	bb 1f       	adc	r27, r27
+ 446:	a8 0f       	add	r26, r24
+ 448:	b9 1f       	adc	r27, r25
+ 44a:	ac 0f       	add	r26, r28
+ 44c:	bd 1f       	adc	r27, r29
+		STEP_Mask = STEP_ConfigData[STEPNUM].STEPMask[Str_ar];
+ 44e:	fd 01       	movw	r30, r26
+ 450:	e0 0f       	add	r30, r16
+ 452:	f1 1d       	adc	r31, r1
+		Str_ar++;
+		DIO_vidWritePortDirection(STEP_Port,STEP_Mask,0xFF);
+ 454:	8c 91       	ld	r24, X
+ 456:	61 81       	ldd	r22, Z+1	; 0x01
+ 458:	4f ef       	ldi	r20, 0xFF	; 255
+ 45a:	0e 94 aa 03 	call	0x754	; 0x754 <DIO_vidWritePortDirection>
+	unsigned char STEP_Port;
+	unsigned char STEP_Mask;
+	unsigned char STEPNUM = 0;
+	unsigned char Str_ar = 0;
+	STEP_Count = 0;
+	for(LoopIndex = 0 ; LoopIndex < (STEP_NUM * 4) ; LoopIndex ++)
+ 45e:	1f 5f       	subi	r17, 0xFF	; 255
+ 460:	14 30       	cpi	r17, 0x04	; 4
+ 462:	11 f0       	breq	.+4      	; 0x468 <__stack+0x9>
+	{
+		if (((LoopIndex % 4) == 0) && (LoopIndex != 0)){++STEPNUM;}
+		if (Str_ar == 4){Str_ar =0;}
+		STEP_Port = STEP_ConfigData[STEPNUM].STEPPort;
+		STEP_Mask = STEP_ConfigData[STEPNUM].STEPMask[Str_ar];
+		Str_ar++;
+ 464:	0f 5f       	subi	r16, 0xFF	; 255
+ 466:	e0 cf       	rjmp	.-64     	; 0x428 <STEP_Init+0x1c>
+		DIO_vidWritePortDirection(STEP_Port,STEP_Mask,0xFF);
+	}	
+} 
+ 468:	df 91       	pop	r29
+ 46a:	cf 91       	pop	r28
+ 46c:	1f 91       	pop	r17
+ 46e:	0f 91       	pop	r16
+ 470:	ff 90       	pop	r15
+ 472:	ef 90       	pop	r14
+ 474:	08 95       	ret
+
+00000476 <STEP_Mode>:
+
+// set Stepper mode half or full
+void STEP_Mode(unsigned char STEPMODE, unsigned char STEP_Id)
+{
+	if (STEPMODE == HALF_STEP_Mode)
+ 476:	88 23       	and	r24, r24
+ 478:	31 f4       	brne	.+12     	; 0x486 <STEP_Mode+0x10>
+	{
+		STEP_MOD[STEP_Id] = HALF_STEP_Mode;
+ 47a:	e6 2f       	mov	r30, r22
+ 47c:	f0 e0       	ldi	r31, 0x00	; 0
+ 47e:	ef 56       	subi	r30, 0x6F	; 111
+ 480:	ff 4f       	sbci	r31, 0xFF	; 255
+ 482:	10 82       	st	Z, r1
+ 484:	08 95       	ret
+	}
+	else if (STEPMODE == FULL_STEP_Mode)
+ 486:	81 30       	cpi	r24, 0x01	; 1
+ 488:	29 f4       	brne	.+10     	; 0x494 <STEP_Mode+0x1e>
+	{
+		STEP_MOD[STEP_Id] = FULL_STEP_Mode;
+ 48a:	e6 2f       	mov	r30, r22
+ 48c:	f0 e0       	ldi	r31, 0x00	; 0
+ 48e:	ef 56       	subi	r30, 0x6F	; 111
+ 490:	ff 4f       	sbci	r31, 0xFF	; 255
+ 492:	80 83       	st	Z, r24
+ 494:	08 95       	ret
+
+00000496 <STEP_Direction>:
+	}				
+}
+
+void STEP_Direction(unsigned char STEPDIR, unsigned char STEP_Id)
+{
+	if (STEPDIR == Left)
+ 496:	88 23       	and	r24, r24
+ 498:	31 f4       	brne	.+12     	; 0x4a6 <STEP_Direction+0x10>
+	{
+		STEP_DIR[STEP_Id] = Left;
+ 49a:	e6 2f       	mov	r30, r22
+ 49c:	f0 e0       	ldi	r31, 0x00	; 0
+ 49e:	ed 56       	subi	r30, 0x6D	; 109
+ 4a0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4a2:	10 82       	st	Z, r1
+ 4a4:	08 95       	ret
+	}
+	else if (STEPDIR == Right )
+ 4a6:	81 30       	cpi	r24, 0x01	; 1
+ 4a8:	29 f4       	brne	.+10     	; 0x4b4 <STEP_Direction+0x1e>
+	{
+		STEP_DIR[STEP_Id] = Right;
+ 4aa:	e6 2f       	mov	r30, r22
+ 4ac:	f0 e0       	ldi	r31, 0x00	; 0
+ 4ae:	ed 56       	subi	r30, 0x6D	; 109
+ 4b0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4b2:	80 83       	st	Z, r24
+ 4b4:	08 95       	ret
+
+000004b6 <FULL_STEP>:
+	}
+}
+
+void FULL_STEP(unsigned char NUM, unsigned char Id)
+{
+	switch(NUM){
+ 4b6:	81 30       	cpi	r24, 0x01	; 1
+ 4b8:	c9 f0       	breq	.+50     	; 0x4ec <FULL_STEP+0x36>
+ 4ba:	81 30       	cpi	r24, 0x01	; 1
+ 4bc:	30 f0       	brcs	.+12     	; 0x4ca <FULL_STEP+0x14>
+ 4be:	82 30       	cpi	r24, 0x02	; 2
+ 4c0:	31 f1       	breq	.+76     	; 0x50e <FULL_STEP+0x58>
+ 4c2:	83 30       	cpi	r24, 0x03	; 3
+ 4c4:	09 f0       	breq	.+2      	; 0x4c8 <FULL_STEP+0x12>
+ 4c6:	43 c0       	rjmp	.+134    	; 0x54e <FULL_STEP+0x98>
+ 4c8:	33 c0       	rjmp	.+102    	; 0x530 <FULL_STEP+0x7a>
+		case 0:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[1] | STEP_ConfigData[Id].STEPMask[3];
+ 4ca:	70 e0       	ldi	r23, 0x00	; 0
+ 4cc:	fb 01       	movw	r30, r22
+ 4ce:	ee 0f       	add	r30, r30
+ 4d0:	ff 1f       	adc	r31, r31
+ 4d2:	ee 0f       	add	r30, r30
+ 4d4:	ff 1f       	adc	r31, r31
+ 4d6:	6e 0f       	add	r22, r30
+ 4d8:	7f 1f       	adc	r23, r31
+ 4da:	fb 01       	movw	r30, r22
+ 4dc:	ee 57       	subi	r30, 0x7E	; 126
+ 4de:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4e0:	94 81       	ldd	r25, Z+4	; 0x04
+ 4e2:	82 81       	ldd	r24, Z+2	; 0x02
+ 4e4:	89 2b       	or	r24, r25
+ 4e6:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 4ea:	08 95       	ret
+		case 1:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[3] | STEP_ConfigData[Id].STEPMask[0];
+ 4ec:	70 e0       	ldi	r23, 0x00	; 0
+ 4ee:	fb 01       	movw	r30, r22
+ 4f0:	ee 0f       	add	r30, r30
+ 4f2:	ff 1f       	adc	r31, r31
+ 4f4:	ee 0f       	add	r30, r30
+ 4f6:	ff 1f       	adc	r31, r31
+ 4f8:	6e 0f       	add	r22, r30
+ 4fa:	7f 1f       	adc	r23, r31
+ 4fc:	fb 01       	movw	r30, r22
+ 4fe:	ee 57       	subi	r30, 0x7E	; 126
+ 500:	ff 4f       	sbci	r31, 0xFF	; 255
+ 502:	91 81       	ldd	r25, Z+1	; 0x01
+ 504:	84 81       	ldd	r24, Z+4	; 0x04
+ 506:	89 2b       	or	r24, r25
+ 508:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 50c:	08 95       	ret
+		case 2:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[0] | STEP_ConfigData[Id].STEPMask[2];
+ 50e:	70 e0       	ldi	r23, 0x00	; 0
+ 510:	fb 01       	movw	r30, r22
+ 512:	ee 0f       	add	r30, r30
+ 514:	ff 1f       	adc	r31, r31
+ 516:	ee 0f       	add	r30, r30
+ 518:	ff 1f       	adc	r31, r31
+ 51a:	6e 0f       	add	r22, r30
+ 51c:	7f 1f       	adc	r23, r31
+ 51e:	fb 01       	movw	r30, r22
+ 520:	ee 57       	subi	r30, 0x7E	; 126
+ 522:	ff 4f       	sbci	r31, 0xFF	; 255
+ 524:	93 81       	ldd	r25, Z+3	; 0x03
+ 526:	81 81       	ldd	r24, Z+1	; 0x01
+ 528:	89 2b       	or	r24, r25
+ 52a:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 52e:	08 95       	ret
+		case 3:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[1] | STEP_ConfigData[Id].STEPMask[2];
+ 530:	70 e0       	ldi	r23, 0x00	; 0
+ 532:	fb 01       	movw	r30, r22
+ 534:	ee 0f       	add	r30, r30
+ 536:	ff 1f       	adc	r31, r31
+ 538:	ee 0f       	add	r30, r30
+ 53a:	ff 1f       	adc	r31, r31
+ 53c:	e6 0f       	add	r30, r22
+ 53e:	f7 1f       	adc	r31, r23
+ 540:	ee 57       	subi	r30, 0x7E	; 126
+ 542:	ff 4f       	sbci	r31, 0xFF	; 255
+ 544:	93 81       	ldd	r25, Z+3	; 0x03
+ 546:	82 81       	ldd	r24, Z+2	; 0x02
+ 548:	89 2b       	or	r24, r25
+ 54a:	80 93 90 00 	sts	0x0090, r24
+ 54e:	08 95       	ret
+
+00000550 <HALF_STEP>:
+	}	
+}
+
+void HALF_STEP(unsigned char NUM, unsigned char Id)
+{
+	switch(NUM)
+ 550:	83 30       	cpi	r24, 0x03	; 3
+ 552:	09 f4       	brne	.+2      	; 0x556 <HALF_STEP+0x6>
+ 554:	45 c0       	rjmp	.+138    	; 0x5e0 <HALF_STEP+0x90>
+ 556:	84 30       	cpi	r24, 0x04	; 4
+ 558:	28 f4       	brcc	.+10     	; 0x564 <HALF_STEP+0x14>
+ 55a:	81 30       	cpi	r24, 0x01	; 1
+ 55c:	09 f1       	breq	.+66     	; 0x5a0 <HALF_STEP+0x50>
+ 55e:	82 30       	cpi	r24, 0x02	; 2
+ 560:	70 f5       	brcc	.+92     	; 0x5be <HALF_STEP+0x6e>
+ 562:	0d c0       	rjmp	.+26     	; 0x57e <HALF_STEP+0x2e>
+ 564:	85 30       	cpi	r24, 0x05	; 5
+ 566:	09 f4       	brne	.+2      	; 0x56a <HALF_STEP+0x1a>
+ 568:	5b c0       	rjmp	.+182    	; 0x620 <HALF_STEP+0xd0>
+ 56a:	85 30       	cpi	r24, 0x05	; 5
+ 56c:	08 f4       	brcc	.+2      	; 0x570 <HALF_STEP+0x20>
+ 56e:	47 c0       	rjmp	.+142    	; 0x5fe <HALF_STEP+0xae>
+ 570:	86 30       	cpi	r24, 0x06	; 6
+ 572:	09 f4       	brne	.+2      	; 0x576 <HALF_STEP+0x26>
+ 574:	64 c0       	rjmp	.+200    	; 0x63e <HALF_STEP+0xee>
+ 576:	87 30       	cpi	r24, 0x07	; 7
+ 578:	09 f0       	breq	.+2      	; 0x57c <HALF_STEP+0x2c>
+ 57a:	80 c0       	rjmp	.+256    	; 0x67c <HALF_STEP+0x12c>
+ 57c:	71 c0       	rjmp	.+226    	; 0x660 <HALF_STEP+0x110>
+	{
+		case 0:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[3] | STEP_ConfigData[Id].STEPMask[1];
+ 57e:	70 e0       	ldi	r23, 0x00	; 0
+ 580:	fb 01       	movw	r30, r22
+ 582:	ee 0f       	add	r30, r30
+ 584:	ff 1f       	adc	r31, r31
+ 586:	ee 0f       	add	r30, r30
+ 588:	ff 1f       	adc	r31, r31
+ 58a:	6e 0f       	add	r22, r30
+ 58c:	7f 1f       	adc	r23, r31
+ 58e:	fb 01       	movw	r30, r22
+ 590:	ee 57       	subi	r30, 0x7E	; 126
+ 592:	ff 4f       	sbci	r31, 0xFF	; 255
+ 594:	92 81       	ldd	r25, Z+2	; 0x02
+ 596:	84 81       	ldd	r24, Z+4	; 0x04
+ 598:	89 2b       	or	r24, r25
+ 59a:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 59e:	08 95       	ret
+		case 1:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[3];
+ 5a0:	70 e0       	ldi	r23, 0x00	; 0
+ 5a2:	fb 01       	movw	r30, r22
+ 5a4:	ee 0f       	add	r30, r30
+ 5a6:	ff 1f       	adc	r31, r31
+ 5a8:	ee 0f       	add	r30, r30
+ 5aa:	ff 1f       	adc	r31, r31
+ 5ac:	6e 0f       	add	r22, r30
+ 5ae:	7f 1f       	adc	r23, r31
+ 5b0:	fb 01       	movw	r30, r22
+ 5b2:	ee 57       	subi	r30, 0x7E	; 126
+ 5b4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5b6:	84 81       	ldd	r24, Z+4	; 0x04
+ 5b8:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 5bc:	08 95       	ret
+		case 2:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[3] | STEP_ConfigData[Id].STEPMask[0];
+ 5be:	70 e0       	ldi	r23, 0x00	; 0
+ 5c0:	fb 01       	movw	r30, r22
+ 5c2:	ee 0f       	add	r30, r30
+ 5c4:	ff 1f       	adc	r31, r31
+ 5c6:	ee 0f       	add	r30, r30
+ 5c8:	ff 1f       	adc	r31, r31
+ 5ca:	6e 0f       	add	r22, r30
+ 5cc:	7f 1f       	adc	r23, r31
+ 5ce:	fb 01       	movw	r30, r22
+ 5d0:	ee 57       	subi	r30, 0x7E	; 126
+ 5d2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5d4:	91 81       	ldd	r25, Z+1	; 0x01
+ 5d6:	84 81       	ldd	r24, Z+4	; 0x04
+ 5d8:	89 2b       	or	r24, r25
+ 5da:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 5de:	08 95       	ret
+		case 3:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[0];
+ 5e0:	70 e0       	ldi	r23, 0x00	; 0
+ 5e2:	fb 01       	movw	r30, r22
+ 5e4:	ee 0f       	add	r30, r30
+ 5e6:	ff 1f       	adc	r31, r31
+ 5e8:	ee 0f       	add	r30, r30
+ 5ea:	ff 1f       	adc	r31, r31
+ 5ec:	6e 0f       	add	r22, r30
+ 5ee:	7f 1f       	adc	r23, r31
+ 5f0:	fb 01       	movw	r30, r22
+ 5f2:	ee 57       	subi	r30, 0x7E	; 126
+ 5f4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5f6:	81 81       	ldd	r24, Z+1	; 0x01
+ 5f8:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 5fc:	08 95       	ret
+		case 4:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[2] | STEP_ConfigData[Id].STEPMask[0];
+ 5fe:	70 e0       	ldi	r23, 0x00	; 0
+ 600:	fb 01       	movw	r30, r22
+ 602:	ee 0f       	add	r30, r30
+ 604:	ff 1f       	adc	r31, r31
+ 606:	ee 0f       	add	r30, r30
+ 608:	ff 1f       	adc	r31, r31
+ 60a:	6e 0f       	add	r22, r30
+ 60c:	7f 1f       	adc	r23, r31
+ 60e:	fb 01       	movw	r30, r22
+ 610:	ee 57       	subi	r30, 0x7E	; 126
+ 612:	ff 4f       	sbci	r31, 0xFF	; 255
+ 614:	91 81       	ldd	r25, Z+1	; 0x01
+ 616:	83 81       	ldd	r24, Z+3	; 0x03
+ 618:	89 2b       	or	r24, r25
+ 61a:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 61e:	08 95       	ret
+		case 5:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[2];
+ 620:	70 e0       	ldi	r23, 0x00	; 0
+ 622:	fb 01       	movw	r30, r22
+ 624:	ee 0f       	add	r30, r30
+ 626:	ff 1f       	adc	r31, r31
+ 628:	ee 0f       	add	r30, r30
+ 62a:	ff 1f       	adc	r31, r31
+ 62c:	6e 0f       	add	r22, r30
+ 62e:	7f 1f       	adc	r23, r31
+ 630:	fb 01       	movw	r30, r22
+ 632:	ee 57       	subi	r30, 0x7E	; 126
+ 634:	ff 4f       	sbci	r31, 0xFF	; 255
+ 636:	83 81       	ldd	r24, Z+3	; 0x03
+ 638:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 63c:	08 95       	ret
+		case 6:
+			STEPPER_Mask =STEP_ConfigData[Id].STEPMask[1] | STEP_ConfigData[Id].STEPMask[2];
+ 63e:	70 e0       	ldi	r23, 0x00	; 0
+ 640:	fb 01       	movw	r30, r22
+ 642:	ee 0f       	add	r30, r30
+ 644:	ff 1f       	adc	r31, r31
+ 646:	ee 0f       	add	r30, r30
+ 648:	ff 1f       	adc	r31, r31
+ 64a:	6e 0f       	add	r22, r30
+ 64c:	7f 1f       	adc	r23, r31
+ 64e:	fb 01       	movw	r30, r22
+ 650:	ee 57       	subi	r30, 0x7E	; 126
+ 652:	ff 4f       	sbci	r31, 0xFF	; 255
+ 654:	93 81       	ldd	r25, Z+3	; 0x03
+ 656:	82 81       	ldd	r24, Z+2	; 0x02
+ 658:	89 2b       	or	r24, r25
+ 65a:	80 93 90 00 	sts	0x0090, r24
+			break;
+ 65e:	08 95       	ret
+		case 7:
+			STEPPER_Mask = STEP_ConfigData[Id].STEPMask[1];
+ 660:	70 e0       	ldi	r23, 0x00	; 0
+ 662:	fb 01       	movw	r30, r22
+ 664:	ee 0f       	add	r30, r30
+ 666:	ff 1f       	adc	r31, r31
+ 668:	ee 0f       	add	r30, r30
+ 66a:	ff 1f       	adc	r31, r31
+ 66c:	6e 0f       	add	r22, r30
+ 66e:	7f 1f       	adc	r23, r31
+ 670:	fb 01       	movw	r30, r22
+ 672:	ee 57       	subi	r30, 0x7E	; 126
+ 674:	ff 4f       	sbci	r31, 0xFF	; 255
+ 676:	82 81       	ldd	r24, Z+2	; 0x02
+ 678:	80 93 90 00 	sts	0x0090, r24
+ 67c:	08 95       	ret
+
+0000067e <STEP_Rotate>:
+		STEP_DIR[STEP_Id] = Right;
+	}
+}
+
+void STEP_Rotate(unsigned char STEP_Id)
+{
+ 67e:	1f 93       	push	r17
+ 680:	cf 93       	push	r28
+ 682:	df 93       	push	r29
+ 684:	68 2f       	mov	r22, r24
+	unsigned char STEP_Port = STEP_ConfigData[STEP_Id].STEPPort;
+ 686:	c8 2f       	mov	r28, r24
+ 688:	d0 e0       	ldi	r29, 0x00	; 0
+ 68a:	fe 01       	movw	r30, r28
+ 68c:	ee 0f       	add	r30, r30
+ 68e:	ff 1f       	adc	r31, r31
+ 690:	ee 0f       	add	r30, r30
+ 692:	ff 1f       	adc	r31, r31
+ 694:	ec 0f       	add	r30, r28
+ 696:	fd 1f       	adc	r31, r29
+ 698:	ee 57       	subi	r30, 0x7E	; 126
+ 69a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 69c:	10 81       	ld	r17, Z
+	if (STEP_MOD[STEP_Id] == FULL_STEP_Mode)		
+ 69e:	fe 01       	movw	r30, r28
+ 6a0:	ef 56       	subi	r30, 0x6F	; 111
+ 6a2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 6a4:	80 81       	ld	r24, Z
+ 6a6:	81 30       	cpi	r24, 0x01	; 1
+ 6a8:	41 f5       	brne	.+80     	; 0x6fa <STEP_Rotate+0x7c>
+	{
+		FULL_STEP(STEP_Count,STEP_Id);
+ 6aa:	80 91 92 00 	lds	r24, 0x0092
+ 6ae:	0e 94 5b 02 	call	0x4b6	; 0x4b6 <FULL_STEP>
+		DIO_vidWritePortData(STEP_Port,0xFF,STEPPER_Mask);
+ 6b2:	81 2f       	mov	r24, r17
+ 6b4:	6f ef       	ldi	r22, 0xFF	; 255
+ 6b6:	40 91 90 00 	lds	r20, 0x0090
+ 6ba:	0e 94 db 03 	call	0x7b6	; 0x7b6 <DIO_vidWritePortData>
+		
+		if (STEP_DIR[STEP_Id] == Right){++STEP_Count;}
+ 6be:	cd 56       	subi	r28, 0x6D	; 109
+ 6c0:	df 4f       	sbci	r29, 0xFF	; 255
+ 6c2:	88 81       	ld	r24, Y
+ 6c4:	81 30       	cpi	r24, 0x01	; 1
+ 6c6:	29 f4       	brne	.+10     	; 0x6d2 <STEP_Rotate+0x54>
+ 6c8:	90 91 92 00 	lds	r25, 0x0092
+ 6cc:	9f 5f       	subi	r25, 0xFF	; 255
+ 6ce:	90 93 92 00 	sts	0x0092, r25
+		if(STEP_Count >= 4){STEP_Count =0;}
+ 6d2:	90 91 92 00 	lds	r25, 0x0092
+ 6d6:	94 30       	cpi	r25, 0x04	; 4
+ 6d8:	10 f0       	brcs	.+4      	; 0x6de <STEP_Rotate+0x60>
+ 6da:	10 92 92 00 	sts	0x0092, r1
+		if((STEP_DIR[STEP_Id] == Left) && (STEP_Count != 0)){--STEP_Count;}
+ 6de:	88 23       	and	r24, r24
+ 6e0:	a9 f5       	brne	.+106    	; 0x74c <STEP_Rotate+0xce>
+ 6e2:	80 91 92 00 	lds	r24, 0x0092
+ 6e6:	88 23       	and	r24, r24
+ 6e8:	21 f0       	breq	.+8      	; 0x6f2 <STEP_Rotate+0x74>
+ 6ea:	81 50       	subi	r24, 0x01	; 1
+ 6ec:	80 93 92 00 	sts	0x0092, r24
+ 6f0:	2d c0       	rjmp	.+90     	; 0x74c <STEP_Rotate+0xce>
+		else if((STEP_DIR[STEP_Id] == Left) && (STEP_Count == 0)){STEP_Count =3;}
+ 6f2:	83 e0       	ldi	r24, 0x03	; 3
+ 6f4:	80 93 92 00 	sts	0x0092, r24
+ 6f8:	29 c0       	rjmp	.+82     	; 0x74c <STEP_Rotate+0xce>
+	}	
+	else if ( STEP_MOD[STEP_Id] == HALF_STEP_Mode) 
+ 6fa:	88 23       	and	r24, r24
+ 6fc:	39 f5       	brne	.+78     	; 0x74c <STEP_Rotate+0xce>
+	{
+		HALF_STEP(STEP_Count,STEP_Id);
+ 6fe:	80 91 92 00 	lds	r24, 0x0092
+ 702:	0e 94 a8 02 	call	0x550	; 0x550 <HALF_STEP>
+		DIO_vidWritePortData(STEP_Port,0xFF,STEPPER_Mask);
+ 706:	81 2f       	mov	r24, r17
+ 708:	6f ef       	ldi	r22, 0xFF	; 255
+ 70a:	40 91 90 00 	lds	r20, 0x0090
+ 70e:	0e 94 db 03 	call	0x7b6	; 0x7b6 <DIO_vidWritePortData>
+		
+		if (STEP_DIR[STEP_Id] == Right){++STEP_Count;}
+ 712:	cd 56       	subi	r28, 0x6D	; 109
+ 714:	df 4f       	sbci	r29, 0xFF	; 255
+ 716:	88 81       	ld	r24, Y
+ 718:	81 30       	cpi	r24, 0x01	; 1
+ 71a:	29 f4       	brne	.+10     	; 0x726 <STEP_Rotate+0xa8>
+ 71c:	90 91 92 00 	lds	r25, 0x0092
+ 720:	9f 5f       	subi	r25, 0xFF	; 255
+ 722:	90 93 92 00 	sts	0x0092, r25
+		if((STEP_Count == 8)){STEP_Count =0;}
+ 726:	90 91 92 00 	lds	r25, 0x0092
+ 72a:	98 30       	cpi	r25, 0x08	; 8
+ 72c:	11 f4       	brne	.+4      	; 0x732 <STEP_Rotate+0xb4>
+ 72e:	10 92 92 00 	sts	0x0092, r1
+		if((STEP_DIR[STEP_Id] == Left) && (STEP_Count !=0)){--STEP_Count;}
+ 732:	88 23       	and	r24, r24
+ 734:	59 f4       	brne	.+22     	; 0x74c <STEP_Rotate+0xce>
+ 736:	80 91 92 00 	lds	r24, 0x0092
+ 73a:	88 23       	and	r24, r24
+ 73c:	21 f0       	breq	.+8      	; 0x746 <STEP_Rotate+0xc8>
+ 73e:	81 50       	subi	r24, 0x01	; 1
+ 740:	80 93 92 00 	sts	0x0092, r24
+ 744:	03 c0       	rjmp	.+6      	; 0x74c <STEP_Rotate+0xce>
+		else if((STEP_DIR[STEP_Id] == Left) && (STEP_Count == 0) ){STEP_Count =7;}
+ 746:	87 e0       	ldi	r24, 0x07	; 7
+ 748:	80 93 92 00 	sts	0x0092, r24
+		
+	}
+}
+ 74c:	df 91       	pop	r29
+ 74e:	cf 91       	pop	r28
+ 750:	1f 91       	pop	r17
+ 752:	08 95       	ret
+
+00000754 <DIO_vidWritePortDirection>:
+                                  REG |= (VAL & MASK)
+								  
+#define GET_REG_VAL(REG,MASK) REG & MASK
+void DIO_vidWritePortDirection(unsigned char u8PortName,unsigned char u8PortMask,unsigned char u8Direction)
+{
+	switch(u8PortName)
+ 754:	81 30       	cpi	r24, 0x01	; 1
+ 756:	89 f0       	breq	.+34     	; 0x77a <DIO_vidWritePortDirection+0x26>
+ 758:	81 30       	cpi	r24, 0x01	; 1
+ 75a:	28 f0       	brcs	.+10     	; 0x766 <DIO_vidWritePortDirection+0x12>
+ 75c:	82 30       	cpi	r24, 0x02	; 2
+ 75e:	b9 f0       	breq	.+46     	; 0x78e <DIO_vidWritePortDirection+0x3a>
+ 760:	83 30       	cpi	r24, 0x03	; 3
+ 762:	41 f5       	brne	.+80     	; 0x7b4 <DIO_vidWritePortDirection+0x60>
+ 764:	1e c0       	rjmp	.+60     	; 0x7a2 <DIO_vidWritePortDirection+0x4e>
+	{
+		case PA:
+		{
+			SET_REG_VAL(DDRA,u8Direction,u8PortMask);
+ 766:	8a b3       	in	r24, 0x1a	; 26
+ 768:	96 2f       	mov	r25, r22
+ 76a:	90 95       	com	r25
+ 76c:	89 23       	and	r24, r25
+ 76e:	8a bb       	out	0x1a, r24	; 26
+ 770:	8a b3       	in	r24, 0x1a	; 26
+ 772:	64 23       	and	r22, r20
+ 774:	68 2b       	or	r22, r24
+ 776:	6a bb       	out	0x1a, r22	; 26
+		}	
+		break;
+ 778:	08 95       	ret
+		
+		case PB:
+		{
+			SET_REG_VAL(DDRB,u8Direction,u8PortMask);
+ 77a:	87 b3       	in	r24, 0x17	; 23
+ 77c:	96 2f       	mov	r25, r22
+ 77e:	90 95       	com	r25
+ 780:	89 23       	and	r24, r25
+ 782:	87 bb       	out	0x17, r24	; 23
+ 784:	87 b3       	in	r24, 0x17	; 23
+ 786:	64 23       	and	r22, r20
+ 788:	68 2b       	or	r22, r24
+ 78a:	67 bb       	out	0x17, r22	; 23
+		}	
+		break;
+ 78c:	08 95       	ret
+		case PC:
+		{
+			SET_REG_VAL(DDRC,u8Direction,u8PortMask);
+ 78e:	84 b3       	in	r24, 0x14	; 20
+ 790:	96 2f       	mov	r25, r22
+ 792:	90 95       	com	r25
+ 794:	89 23       	and	r24, r25
+ 796:	84 bb       	out	0x14, r24	; 20
+ 798:	84 b3       	in	r24, 0x14	; 20
+ 79a:	64 23       	and	r22, r20
+ 79c:	68 2b       	or	r22, r24
+ 79e:	64 bb       	out	0x14, r22	; 20
+		}
+		break;
+ 7a0:	08 95       	ret
+		
+		case PD:
+		{
+			SET_REG_VAL(DDRD,u8Direction,u8PortMask);
+ 7a2:	81 b3       	in	r24, 0x11	; 17
+ 7a4:	96 2f       	mov	r25, r22
+ 7a6:	90 95       	com	r25
+ 7a8:	89 23       	and	r24, r25
+ 7aa:	81 bb       	out	0x11, r24	; 17
+ 7ac:	81 b3       	in	r24, 0x11	; 17
+ 7ae:	64 23       	and	r22, r20
+ 7b0:	68 2b       	or	r22, r24
+ 7b2:	61 bb       	out	0x11, r22	; 17
+ 7b4:	08 95       	ret
+
+000007b6 <DIO_vidWritePortData>:
+	}
+	
+}
+ void DIO_vidWritePortData(unsigned char u8PortName,unsigned char u8PortMask,unsigned char u8Data)
+{
+		switch(u8PortName)
+ 7b6:	81 30       	cpi	r24, 0x01	; 1
+ 7b8:	89 f0       	breq	.+34     	; 0x7dc <DIO_vidWritePortData+0x26>
+ 7ba:	81 30       	cpi	r24, 0x01	; 1
+ 7bc:	28 f0       	brcs	.+10     	; 0x7c8 <DIO_vidWritePortData+0x12>
+ 7be:	82 30       	cpi	r24, 0x02	; 2
+ 7c0:	b9 f0       	breq	.+46     	; 0x7f0 <DIO_vidWritePortData+0x3a>
+ 7c2:	83 30       	cpi	r24, 0x03	; 3
+ 7c4:	41 f5       	brne	.+80     	; 0x816 <DIO_vidWritePortData+0x60>
+ 7c6:	1e c0       	rjmp	.+60     	; 0x804 <DIO_vidWritePortData+0x4e>
+		{
+			case PA:
+			{
+				SET_REG_VAL(PORTA,u8Data,u8PortMask);
+ 7c8:	8b b3       	in	r24, 0x1b	; 27
+ 7ca:	96 2f       	mov	r25, r22
+ 7cc:	90 95       	com	r25
+ 7ce:	89 23       	and	r24, r25
+ 7d0:	8b bb       	out	0x1b, r24	; 27
+ 7d2:	8b b3       	in	r24, 0x1b	; 27
+ 7d4:	64 23       	and	r22, r20
+ 7d6:	68 2b       	or	r22, r24
+ 7d8:	6b bb       	out	0x1b, r22	; 27
+			}
+			break;
+ 7da:	08 95       	ret
+			
+			case PB:
+			{
+				SET_REG_VAL(PORTB,u8Data,u8PortMask);
+ 7dc:	88 b3       	in	r24, 0x18	; 24
+ 7de:	96 2f       	mov	r25, r22
+ 7e0:	90 95       	com	r25
+ 7e2:	89 23       	and	r24, r25
+ 7e4:	88 bb       	out	0x18, r24	; 24
+ 7e6:	88 b3       	in	r24, 0x18	; 24
+ 7e8:	64 23       	and	r22, r20
+ 7ea:	68 2b       	or	r22, r24
+ 7ec:	68 bb       	out	0x18, r22	; 24
+			}
+			break;
+ 7ee:	08 95       	ret
+			case PC:
+			{
+				SET_REG_VAL(PORTC,u8Data,u8PortMask);
+ 7f0:	85 b3       	in	r24, 0x15	; 21
+ 7f2:	96 2f       	mov	r25, r22
+ 7f4:	90 95       	com	r25
+ 7f6:	89 23       	and	r24, r25
+ 7f8:	85 bb       	out	0x15, r24	; 21
+ 7fa:	85 b3       	in	r24, 0x15	; 21
+ 7fc:	64 23       	and	r22, r20
+ 7fe:	68 2b       	or	r22, r24
+ 800:	65 bb       	out	0x15, r22	; 21
+			}
+			break;
+ 802:	08 95       	ret
+			
+			case PD:
+			{
+				SET_REG_VAL(PORTD,u8Data,u8PortMask);
+ 804:	82 b3       	in	r24, 0x12	; 18
+ 806:	96 2f       	mov	r25, r22
+ 808:	90 95       	com	r25
+ 80a:	89 23       	and	r24, r25
+ 80c:	82 bb       	out	0x12, r24	; 18
+ 80e:	82 b3       	in	r24, 0x12	; 18
+ 810:	64 23       	and	r22, r20
+ 812:	68 2b       	or	r22, r24
+ 814:	62 bb       	out	0x12, r22	; 18
+ 816:	08 95       	ret
+
+00000818 <DIO_vidReadPortData>:
+		}
+	
+}
+ void DIO_vidReadPortData(unsigned char u8PortName,unsigned char u8PortMask,unsigned char *pu8DataPtr)
+ {
+	 switch(u8PortName)
+ 818:	81 30       	cpi	r24, 0x01	; 1
+ 81a:	61 f0       	breq	.+24     	; 0x834 <DIO_vidReadPortData+0x1c>
+ 81c:	81 30       	cpi	r24, 0x01	; 1
+ 81e:	28 f0       	brcs	.+10     	; 0x82a <DIO_vidReadPortData+0x12>
+ 820:	82 30       	cpi	r24, 0x02	; 2
+ 822:	69 f0       	breq	.+26     	; 0x83e <DIO_vidReadPortData+0x26>
+ 824:	83 30       	cpi	r24, 0x03	; 3
+ 826:	a1 f4       	brne	.+40     	; 0x850 <DIO_vidReadPortData+0x38>
+ 828:	0f c0       	rjmp	.+30     	; 0x848 <DIO_vidReadPortData+0x30>
+	 {
+		 case PA:
+		 *pu8DataPtr = GET_REG_VAL(PINA,u8PortMask);
+ 82a:	89 b3       	in	r24, 0x19	; 25
+ 82c:	68 23       	and	r22, r24
+ 82e:	fa 01       	movw	r30, r20
+ 830:	60 83       	st	Z, r22
+		 break;
+ 832:	08 95       	ret
+		 case PB:
+		 *pu8DataPtr = GET_REG_VAL(PINB,u8PortMask);
+ 834:	86 b3       	in	r24, 0x16	; 22
+ 836:	68 23       	and	r22, r24
+ 838:	fa 01       	movw	r30, r20
+ 83a:	60 83       	st	Z, r22
+		 break;
+ 83c:	08 95       	ret
+		 case PC:
+		 *pu8DataPtr = GET_REG_VAL(PINC,u8PortMask);
+ 83e:	83 b3       	in	r24, 0x13	; 19
+ 840:	68 23       	and	r22, r24
+ 842:	fa 01       	movw	r30, r20
+ 844:	60 83       	st	Z, r22
+		 break;
+ 846:	08 95       	ret
+		 case PD:
+		 *pu8DataPtr = GET_REG_VAL(PIND,u8PortMask);
+ 848:	80 b3       	in	r24, 0x10	; 16
+ 84a:	68 23       	and	r22, r24
+ 84c:	fa 01       	movw	r30, r20
+ 84e:	60 83       	st	Z, r22
+ 850:	08 95       	ret
+
+00000852 <GPT_Timer250msInit>:
+static PfType Timer250msCallBackPtr;
+static PfType TimerCallBackPtr;
+
+void GPT_Timer250msInit(PfType CallBackPtr)
+{
+	sei();
+ 852:	78 94       	sei
+	Timer250msCallBackPtr = CallBackPtr;
+ 854:	90 93 97 00 	sts	0x0097, r25
+ 858:	80 93 96 00 	sts	0x0096, r24
+	OCR0 = 243;
+ 85c:	83 ef       	ldi	r24, 0xF3	; 243
+ 85e:	8c bf       	out	0x3c, r24	; 60
+	TIMSK |= 1<<OCIE0;
+ 860:	89 b7       	in	r24, 0x39	; 57
+ 862:	82 60       	ori	r24, 0x02	; 2
+ 864:	89 bf       	out	0x39, r24	; 57
+	TCNT0 = 0x00;
+ 866:	12 be       	out	0x32, r1	; 50
+	TCCR0 = 0x00;
+ 868:	13 be       	out	0x33, r1	; 51
+	TCCR0 |= (1<<WGM01) | (1<<CS00) | (1<<CS02); //1024 prescalar
+ 86a:	83 b7       	in	r24, 0x33	; 51
+ 86c:	8d 60       	ori	r24, 0x0D	; 13
+ 86e:	83 bf       	out	0x33, r24	; 51
+		
+}
+ 870:	08 95       	ret
+
+00000872 <GPT_TimerInit>:
+void GPT_TimerInit(PfType CallBackPtr,unsigned char counter)
+{
+	sei();
+ 872:	78 94       	sei
+	TimerCallBackPtr = CallBackPtr;
+ 874:	90 93 95 00 	sts	0x0095, r25
+ 878:	80 93 94 00 	sts	0x0094, r24
+	OCR2 = counter;
+ 87c:	63 bd       	out	0x23, r22	; 35
+	TIMSK |= 1<<OCIE2;
+ 87e:	89 b7       	in	r24, 0x39	; 57
+ 880:	80 68       	ori	r24, 0x80	; 128
+ 882:	89 bf       	out	0x39, r24	; 57
+	TCNT2 = 0x00;
+ 884:	14 bc       	out	0x24, r1	; 36
+	TCCR2 = 0x00;
+ 886:	15 bc       	out	0x25, r1	; 37
+	TCCR2 |= (1<<WGM21) | 0x07;
+ 888:	85 b5       	in	r24, 0x25	; 37
+ 88a:	8f 60       	ori	r24, 0x0F	; 15
+ 88c:	85 bd       	out	0x25, r24	; 37
+	
+}
+ 88e:	08 95       	ret
+
+00000890 <__vector_19>:
+
+ISR(TIMER0_COMP_vect)
+{
+ 890:	1f 92       	push	r1
+ 892:	0f 92       	push	r0
+ 894:	0f b6       	in	r0, 0x3f	; 63
+ 896:	0f 92       	push	r0
+ 898:	11 24       	eor	r1, r1
+ 89a:	2f 93       	push	r18
+ 89c:	3f 93       	push	r19
+ 89e:	4f 93       	push	r20
+ 8a0:	5f 93       	push	r21
+ 8a2:	6f 93       	push	r22
+ 8a4:	7f 93       	push	r23
+ 8a6:	8f 93       	push	r24
+ 8a8:	9f 93       	push	r25
+ 8aa:	af 93       	push	r26
+ 8ac:	bf 93       	push	r27
+ 8ae:	ef 93       	push	r30
+ 8b0:	ff 93       	push	r31
+	Timer250msCallBackPtr();
+ 8b2:	e0 91 96 00 	lds	r30, 0x0096
+ 8b6:	f0 91 97 00 	lds	r31, 0x0097
+ 8ba:	09 95       	icall
+}
+ 8bc:	ff 91       	pop	r31
+ 8be:	ef 91       	pop	r30
+ 8c0:	bf 91       	pop	r27
+ 8c2:	af 91       	pop	r26
+ 8c4:	9f 91       	pop	r25
+ 8c6:	8f 91       	pop	r24
+ 8c8:	7f 91       	pop	r23
+ 8ca:	6f 91       	pop	r22
+ 8cc:	5f 91       	pop	r21
+ 8ce:	4f 91       	pop	r20
+ 8d0:	3f 91       	pop	r19
+ 8d2:	2f 91       	pop	r18
+ 8d4:	0f 90       	pop	r0
+ 8d6:	0f be       	out	0x3f, r0	; 63
+ 8d8:	0f 90       	pop	r0
+ 8da:	1f 90       	pop	r1
+ 8dc:	18 95       	reti
+
+000008de <__vector_3>:
+
+ISR(TIMER2_COMP_vect)
+{
+ 8de:	1f 92       	push	r1
+ 8e0:	0f 92       	push	r0
+ 8e2:	0f b6       	in	r0, 0x3f	; 63
+ 8e4:	0f 92       	push	r0
+ 8e6:	11 24       	eor	r1, r1
+ 8e8:	2f 93       	push	r18
+ 8ea:	3f 93       	push	r19
+ 8ec:	4f 93       	push	r20
+ 8ee:	5f 93       	push	r21
+ 8f0:	6f 93       	push	r22
+ 8f2:	7f 93       	push	r23
+ 8f4:	8f 93       	push	r24
+ 8f6:	9f 93       	push	r25
+ 8f8:	af 93       	push	r26
+ 8fa:	bf 93       	push	r27
+ 8fc:	ef 93       	push	r30
+ 8fe:	ff 93       	push	r31
+	sei();
+ 900:	78 94       	sei
+	TimerCallBackPtr();
+ 902:	e0 91 94 00 	lds	r30, 0x0094
+ 906:	f0 91 95 00 	lds	r31, 0x0095
+ 90a:	09 95       	icall
+}
+ 90c:	ff 91       	pop	r31
+ 90e:	ef 91       	pop	r30
+ 910:	bf 91       	pop	r27
+ 912:	af 91       	pop	r26
+ 914:	9f 91       	pop	r25
+ 916:	8f 91       	pop	r24
+ 918:	7f 91       	pop	r23
+ 91a:	6f 91       	pop	r22
+ 91c:	5f 91       	pop	r21
+ 91e:	4f 91       	pop	r20
+ 920:	3f 91       	pop	r19
+ 922:	2f 91       	pop	r18
+ 924:	0f 90       	pop	r0
+ 926:	0f be       	out	0x3f, r0	; 63
+ 928:	0f 90       	pop	r0
+ 92a:	1f 90       	pop	r1
+ 92c:	18 95       	reti
+
+0000092e <_exit>:
+ 92e:	f8 94       	cli
+
+00000930 <__stop_program>:
+ 930:	ff cf       	rjmp	.-2      	; 0x930 <__stop_program>
